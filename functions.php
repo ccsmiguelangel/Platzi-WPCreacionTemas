@@ -22,3 +22,18 @@ function plz_analythics(){
 }
 
 add_action('wp_body_open', 'plz_analythics');
+
+function plz_theme_supports(){
+  add_theme_support( 'title-tag' );//Add page title at wordpress
+  add_theme_support( 'post-thumbnail' ); // Add wordpress's pages featured image
+  add_theme_support( 'custom-logo' , 
+    array(  
+      'width' => 170,
+      'height' => 35,
+      'flex-width' => true,
+      'flex-height' => true,
+    ) 
+  ); // Allow to add at appearance a logo and favicon 
+}
+
+add_action('after_setup_theme', 'plz_theme_supports');
