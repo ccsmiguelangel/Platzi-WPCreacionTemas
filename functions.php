@@ -13,3 +13,12 @@ function plz_assets(){
 }
 
 add_action('wp_enqueue_scripts', 'plz_assets');
+
+function plz_analythics(){
+
+?>
+<!-- <h1>Analythics</h1> -->
+<?php
+}
+
+add_action('wp_body_open', 'plz_analythics');
