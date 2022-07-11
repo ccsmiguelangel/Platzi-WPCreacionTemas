@@ -10,15 +10,21 @@
 
 <?php
 $plz_args = array(
-  // 'post_type' => 'producto', // Trae solo un producto, nombre de producto registrardo
-  'post_type' => array('producto'),
-  'posts_per_page' => -1, // numeros infinitos
+  // 'post_type' => 'producto', 
+  // Get only one product
+  // and this is getting with the name register on 
+  // "register_post_type" 
+  'post_type' => array('producto'), // Get multiple producto custom post type 
+  'posts_per_page' => -1, // get all post and display on page
 
 
-  // NOTA IMPORTANTE Reiniciar configuración de enlaces permanentes al crear custom post types para refrescar para generar configuración en archivo . htaccess
+  // Important note: Restart permalinks
+  // configuration, when
+  // creating custom post type
+  // to refresh the .htaccess file configuration
 );
 
-// Instanciar
+// Instantiate custom post type "producto"
 $productos = new WP_Query($plz_args);
 ?>
 <div class="productos__container">
