@@ -2,7 +2,7 @@
     </main>
 
     <footer class="text-center my-4">
-        De LATAM con 💚 para el mundo
+        <?php dynamic_sidebar('pie-pagina'); // show footer sidebar (widget) ?>
     </footer>
 
 <?php wp_footer(); ?>

@@ -1,5 +1,6 @@
 <?php
 
+
 function plz_assets(){
 
   wp_register_style('google-font1','https://fonts.googleapis.com/css2?&family=Roboto:wght@500&display=swap', array(),false, 'all');
@@ -48,3 +49,20 @@ function plz_add_menus(){
 }
 
 add_action('after_setup_theme', 'plz_add_menus');
+
+
+function plz_add_sidebar() {
+
+  //added sidebar for widget configuration on wp admin configuration 
+  register_sidebar(
+    array(
+      'name' => 'Pie de página',
+      'id' => 'pie-pagina',
+      'before_widget' => '', // Prevent generate any default code
+      'after_wideget' => '',
+
+    )
+  ); 
+
+}
+add_action('widgets_init', 'plz_add_sidebar');
