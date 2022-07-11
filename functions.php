@@ -66,3 +66,47 @@ function plz_add_sidebar() {
 
 }
 add_action('widgets_init', 'plz_add_sidebar');
+
+
+// https://wordpress.stackexchange.com/questions/57589/how-do-you-add-thumbnail-support-for-custom-post-types#answer-245141
+add_theme_support( 'post-thumbnails' ); //Add thumbnail functionability
+function plz_add_custom_post_type() {
+  
+  // https://developer.wordpress.org/reference/functions/register_post_type/#menu_icon
+  // https://developer.wordpress.org/reference/functions/get_post_type_labels/#source
+  // https://developer.wordpress.org/reference/functions/post_type_supports/
+  // https://developer.wordpress.org/resource/dashicons/#cart
+  // https://generatewp.com/post-type/
+
+  $labels = array(
+    'name' => 'Producto',
+    'singular_name' => 'Producto',
+    'all_items' => 'Todos los Productos',
+    'add_new' => 'Añadir Producto',
+    'menu_name' => 'Producto',
+    'set_featured_image' => __('Agregar imagen')
+  );
+  $args = array(
+    'labels' => $labels,
+    'description' => 'Productos para listar en catálogo',
+    'public' => true,
+    'publicly_queryable' => true, // call from code
+    'show_in_menu' => true, // shows section menu custom post
+    'query_var' => true, // Add reference values
+    'rewrite' => array( 'slug' => 'producto' ), // site url
+    'capability_type' => 'post', // Display Permissions (Editor)
+    'has_archive' => true, // Page to list all 
+    'hierarchical' => false, // Gerarquía (Electrodomesticos > Heladeras)
+    'meny_position' => 5, // Admin menu
+    // Add title, edit, author and thumbnail for custom post
+    'supports' => array( 'title', 'editor', 'author', 'thumbnail' ), 
+    'taxonomies' => array( 'category', 'post_tag' ), 
+    'show_in_rest' => true, //Generate in api rest
+    'menu_icon' => 'dashicons-car' // Menu icon on admin dashboard
+  );
+
+  register_post_type('producto', $args); //It's a convention to use singular param name
+
+}
+
+add_action("init", "plz_add_custom_post_type");// register hook post type
