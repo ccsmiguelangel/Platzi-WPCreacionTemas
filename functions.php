@@ -37,3 +37,14 @@ function plz_theme_supports(){
 }
 
 add_action('after_setup_theme', 'plz_theme_supports');
+
+function plz_add_menus(){
+  register_nav_menus(
+    array(
+      'menu-principal' => 'Menu Principal',
+      'menu-responsive' => 'Menu Responsive', 
+    )
+  ); // Allow menu section
+}
+
+add_action('after_setup_theme', 'plz_add_menus');
