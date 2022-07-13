@@ -110,3 +110,19 @@ function plz_add_custom_post_type() {
 }
 
 add_action("init", "plz_add_custom_post_type");// register hook post type
+
+
+
+function plz_add_to_sign_in_menu(){
+  
+
+  $current_user = wp_get_current_user();
+  // var_dump($current_user); // Display Debug
+  
+  $msg = is_user_logged_in()? $current_user->user_email: "Sign in";
+
+  echo $msg;
+
+}
+
+add_action('plz_signin', 'plz_add_to_sign_in_menu');
